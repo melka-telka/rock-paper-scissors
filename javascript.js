@@ -1,28 +1,57 @@
-/*The user is prompted to pick one of three options - rock paper or scissors*/
+/*The user is prompted to pick one of three options - rock paper or scissors. Make it case insensitive*/
 
+let playerPrompt = prompt("Choose Rock, Paper or Scissors");
+
+function getPlayerChoice() {
+    if (/^rock$/i.test(playerPrompt)) {
+        return "Rock";
+    } else if (/^paper$/i.test(playerPrompt)) {
+        return "Paper";
+    } else if (/^scissors$/i.test(playerPrompt)) {
+        return "Scissors";
+    }
+}
 
 /*The computer picks a random option*/
 
 function getComputerChoice() {
-    return Math.floor(Math.random() * 3);
+    let pickRandom = Math.floor(Math.random() * 3);
+        if (pickRandom == 0) {
+            return "Rock";
+        } else if (pickRandom == 1) {
+            return "Paper";
+        } else {
+           return "Scissors";
+        }
+    }
+
+/*The game plays a round*/
+
+function playRound (playerSelection, computerSelection) {
+    if (playerSelection == "Rock" && computerSelection == "Paper") {
+        return "You lose! Paper beats rock!";
+    } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+       return "You lose! Scissors beat paper!"
+    } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+        return "You lose! Rock beats scissors!";
+    } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+        return "You win! Rock beats scissors!";
+    } else if (playerSelection == "Paper" && computerSelection == "Rock") {
+        return "You win! Paper beats rock!";
+    } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+        return "You win! Scissors beat paper!";
+    } else if (playerSelection == computerSelection) {
+        return "It's a draw!";
+    }
 }
 
-let computerChose = getComputerChoice();
+let playerChoice = getPlayerChoice();
+console.log("You: " + playerChoice);
+let computerChoice = getComputerChoice();
+console.log("Computer: " + computerChoice);
 
-if (computerChose == 0) {
-    console.log("Rock");
-} else if (computerChose == 1) {
-    console.log("Paper");
-} else {
-    console.log("Scissors");
-}
+console.log(playRound(playerChoice, computerChoice));
 
 
-/*If the combination is rock and paper, the player with paper wins*/
-/*If the combination is rock and scissor, the player with rock wins*/
-/*If the combination is paper and scissor, the player with scissor wins*/
-/*If both the options are the same, the game will be a draw*/
 /*The game lasts for 5 rounds, and after each round the score will be kept.*/
 /*After the last round, a winner and a loser will be reported*/
-
-
