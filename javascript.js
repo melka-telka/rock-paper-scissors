@@ -26,19 +26,28 @@ function getComputerChoice() {
 
 /*The game plays a round*/
 
+let playerScore = 0;
+let computerScore = 0;
+
 function playRound (playerSelection, computerSelection) {
     if (playerSelection == "Rock" && computerSelection == "Paper") {
-        return "You lose! Paper beats rock!";
+        computerScore++
+        return "You lose! Paper beats rock!";     
     } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-       return "You lose! Scissors beat paper!"
+        computerScore++
+       return "You lose! Scissors beat paper!"  
     } else if (playerSelection == "Scissors" && computerSelection == "Rock") {
-        return "You lose! Rock beats scissors!";
+        computerScore++
+        return "You lose! Rock beats scissors!"    
     } else if (playerSelection == "Rock" && computerSelection == "Scissors") {
-        return "You win! Rock beats scissors!";
+        playerScore++
+        return "You win! Rock beats scissors!"   
     } else if (playerSelection == "Paper" && computerSelection == "Rock") {
-        return "You win! Paper beats rock!";
+        playerScore++
+        return "You win! Paper beats rock!"  
     } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
-        return "You win! Scissors beat paper!";
+        playerScore++
+        return "You win! Scissors beat paper!"   
     } else if (playerSelection == computerSelection) {
         return "It's a draw!";
     }
@@ -55,10 +64,23 @@ function game() {
         console.log("Computer: " + computerChoice)
         console.log(playRound(playerChoice, computerChoice))
     }
-    alert("This is the score");
+    getWinner();
 }
 
-    
 game();
+
+ function getWinner() {
+    let score = `Your score: ${playerScore}\nComputer score: ${computerScore}`;
+    alert(score);
+    if (playerScore > computerScore) {
+        alert("Congratulations! You won!")
+    } else if (computerScore > playerScore) {
+        alert("You lost! :(")
+    } else 
+        alert("It's a draw! Play again")
+ }
+    
+
+
 
 /*After the last round, a winner and a loser will be reported*/
