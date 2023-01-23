@@ -1,8 +1,7 @@
 /*The user is prompted to pick one of three options - rock paper or scissors. Make it case insensitive*/
 
-let playerPrompt = prompt("Choose Rock, Paper or Scissors");
-
 function getPlayerChoice() {
+    let playerPrompt = prompt("Choose rock, paper or scissors");
     if (/^rock$/i.test(playerPrompt)) {
         return "Rock";
     } else if (/^paper$/i.test(playerPrompt)) {
@@ -45,13 +44,21 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
-let playerChoice = getPlayerChoice();
-console.log("You: " + playerChoice);
-let computerChoice = getComputerChoice();
-console.log("Computer: " + computerChoice);
-
-console.log(playRound(playerChoice, computerChoice));
-
 
 /*The game lasts for 5 rounds, and after each round the score will be kept.*/
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let playerChoice = getPlayerChoice()
+        console.log("You: " + playerChoice)
+        let computerChoice = getComputerChoice()
+        console.log("Computer: " + computerChoice)
+        console.log(playRound(playerChoice, computerChoice))
+    }
+    alert("This is the score");
+}
+
+    
+game();
+
 /*After the last round, a winner and a loser will be reported*/
